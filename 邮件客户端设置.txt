@@ -1,0 +1,9 @@
+cdwdhr@pku.edu.cn
+	imap:mail.pku.edu.cn:993 SSL/TLS 普通密码
+	smtp:mail.pku.edu.cn:465 SSL/TLS 普通密码 cdwdhr@pku.edu.cn
+chendongwei@mprc.pku.edu.cn
+	imap:mprc.pku.edu.cn:143 STARTTLS 普通密码
+	smtp:mprc.pku.edu.cn:25 无 不安全传输的密码 chendongwei
+pkuharafire@163.com
+	imap:imap.163.com:993 SSL/TLS 普通密码
+	smtp:smtp.163.com:994 SSL/TLS 普通密码 pkuharafire@163.com
