@@ -25,3 +25,16 @@ fat pointer在进行类型转换的时候会出问题？——应该是会有问
 时间错误另一个需要探讨的问题是，为了利用时间错误发起一次成功的攻击，是否要依赖于空间错误来进行铺垫？如果这个假设成立的话那么所有的时间错误可以归于空间错误——double free式的时间错误攻击是要依赖于空间错误来进行内存链表伪造的，但是use-after-free式的攻击要如何完成？有没有成功的use-after-free攻击案例？
 
 如何减少不必要的检查？例如register spill
+
+功能验证：
+NIST Juliet Test Suite for C/C++ [32], SAFE Code test suite, and Wilander test suite [45]. These include more than 2000 test cases exercising various kinds of buffer overflows. To evaluate the effectiveness with use-after-free vulnerabilities, we ran 291 test cases for use-after-free vulnerabilities (CWE-416 and CWE-562) from the NIST Juliet Test Suite for C/C++ [32], which are modeled after various use-after-free errors reported in the wild.
+
+SoftBound这篇里有形式化验证空间错误检查完备性的内容
+
+方案在兼容性方面的表现：是否需要重新编译，是否需要重写代码（源代码兼容性），是否能够链接旧有的库（二进制兼容性），是否能够各模块独立编译（取决于是否需要进行全局的规划）
+几乎所有的方案都会涉及到重新编译
+将指针改为结构体的方案会涉及重写代码--这是一定的吗？但是一定会影响内存分布情况，而且很可能不能链接现有库代码
+low fat pointer这种inline形式的元数据不会使指针本身影响内存分布，但是其进行验证建立在内存结构的一些假设上，所以也有不兼容旧有库的情况
+
+**兼容旧有库的充要条件是什么？**
+**代码不需要重写的充要条件是什么？**
