@@ -38,3 +38,9 @@ low fat pointer这种inline形式的元数据不会使指针本身影响内存�
 
 **兼容旧有库的充要条件是什么？**
 **代码不需要重写的充要条件是什么？**
+
+关于fat pointers，最初提出low fat pointers的论文（文件名p721-kwon.pdf），提到了要让fat pointers能够胜任object capabilities的目标，为什么要定这个目标？object capability有效吗？有多大效果？需要用low fat pointer来实现吗？low fat pointer需要考虑将这个作为目标吗？（是为了保证unforgeable和non-bypassable？）
+
+low fat pointers的基本假设是64位系统中不会把全部的64位用于地址编码，存在未使用的位数
+
+在内存容量扩大的大前提下，memory overhead需不需要关心？超过多少需要关心？内存碎片需不需要关心？
