@@ -49,3 +49,17 @@ low fat pointers的基本假设是64位系统中不会把全部的64位用于地
 
 对指针边界对齐做假设的处理方法存在的最大问题是对与只比边界大一点的对象，它所占用的空间会接近其实际大小的2倍，例如大小为33字节的对象会占用64字节空间。
     p721-kwon的处理方法是把指针占用的空间视为由更小的单元拼接而成，例如为33字节的对象分配17个大小为2字节的空间，这样只浪费了1字节--这类似于浮点数的表示
+    浮点表示法有进位问题，这一部分没看懂
+
+C兼容性：需要允许跨过边界一个单元的指针（C-style Out-of-Bounds pointer）
+    可以在分配空间时多分配一个单元，超出对象真实范围的内存空间需要被标记
+
+low fat pointer的原始文章中，每次读入一个指针时会同时计算出其边界，并将边界保存在寄存器之中，文中4.9节认为这样的做法虽然占用了寄存器资源但实际上令性能得到提升
+
+low fat pointer的原始文章中使用了hardware type，typed machine是否有前景？如果不使用硬件类型的话能否适用类似的方法编码边界？
+
+用来配合的指令：
+    newp, offsetp, addp, sw, lw
+
+
+有可能是浮点式指针的最初来源：J. Brown, J. Grossman, A. Huang, and T. F. Knight, Jr. A capability representation with embedded address and nearly-exact object bounds. Technical Report 5, MIT AI Lab, April 2000. Aries Project.
