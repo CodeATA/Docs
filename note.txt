@@ -63,3 +63,7 @@ low fat pointer的原始文章中使用了hardware type，typed machine是否有
 
 
 有可能是浮点式指针的最初来源：J. Brown, J. Grossman, A. Huang, and T. F. Knight, Jr. A capability representation with embedded address and nearly-exact object bounds. Technical Report 5, MIT AI Lab, April 2000. Aries Project.
+
+按2的幂次划分整个内存空间来方便地支持low-fat指针的做法会遇到难以分配的问题：一次分配区域超过设置的最大值，或者在同一个区域内多次分配导致超过该区域的最大值。这两种情况都无法完全避免，此时可以用libc中的malloc来分配，但这样分配就会导致指针不是low-fat形式，无法受到检查机制的保护——这是一种通用的绕开low-fat的方法吗？
+    需要注意的是这种划分方式提出的文章假设硬件不能动
+
