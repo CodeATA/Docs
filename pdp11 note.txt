@@ -1,0 +1,8 @@
+beyond the PDP-11
+Deployment of these techniques is hampered not just by performance concerns but also by whether current software relies on specific implementation choices. Evaluation cases have frequently been limited to benchmarks and application software that might be termed ?extremely well-behaved C? rather than the low level software that would most benefit from their support (e.g., buffer-centered packet parsing).
+    buffer-centered packet parsing有什么特点？会带来什么设计上的考量？有没有类似的情景？
+
+We can detect assumptions of the PDP-11 model (and violations of the type sys tem), as LLVM must generate and in ptrtoint inttoptr struction pairs that turn a pointer into an integer, perform arithmetic, and then convert it back.
+    在LLVM里如何发现PDP-11模型做的把指针视为整型的运算
+
+存在于操纵系统中的严重影响指针检查的宏https://msdn.microsoft.com/en-us/data/ff542043(v=vs.71)。这个宏接受一个指针，一个类型，和一个field，返回这个指针所指向的对象所在结构体的基地址
